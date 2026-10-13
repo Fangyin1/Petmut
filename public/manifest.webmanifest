@@ -1,0 +1,10 @@
+{
+  "name": "PetLife",
+  "short_name": "PetLife",
+  "description": "Rawat dan ajak bermain Mochi, kucing virtualmu.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4e9dc",
+  "theme_color": "#f4e9dc",
+  "orientation": "any"
+}
