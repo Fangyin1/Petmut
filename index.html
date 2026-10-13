@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080d17" />
+  <meta name="description" content="FangUs — game deduksi sosial bersama teman." />
+  <title>FangUs — Temukan penyusupnya</title>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="FangUs beranda"><span class="brand-mark">F</span><span>Fang<span class="brand-light">Us</span><small>TRUST NO ONE. PLAY TOGETHER.</small></span></a>
+      <div class="top-status"><span class="status-dot"></span> MULTIPLAYER BETA</div>
+    </header>
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> SOCIAL DEDUCTION GAME</div>
+          <h1>Temanmu.<br><em>Atau penyusup?</em></h1>
+          <p>Masuk ke misi bersama teman. Selesaikan tugas, amati gerak-gerik, dan cari tahu siapa yang tidak bisa dipercaya.</p>
+          <div class="hero-actions">
+            <button id="createBtn" class="btn btn-primary"><span>＋</span> Buat Room</button>
+            <button id="joinToggle" class="btn btn-secondary">Gabung Room <span>↗</span></button>
+          </div>
+          <div id="joinForm" class="join-form hidden">
+            <label for="roomCodeInput">KODE ROOM</label>
+            <div class="join-row"><input id="roomCodeInput" maxlength="6" placeholder="CONTOH: A7K2Q" autocomplete="off"><button id="joinBtn" class="btn btn-primary">Gabung</button></div>
+          </div>
+          <div class="hero-meta"><span>◉ 2–6 pemain</span><span>✦ Gratis dimainkan</span><span>⌁ Browser HP & PC</span></div>
+        </div>
+        <div class="hero-art" aria-label="Ilustrasi kru game">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="planet"></div>
+          <div class="astronaut astro-red"><div class="visor"></div><div class="pack"></div></div>
+          <div class="astronaut astro-blue"><div class="visor"></div><div class="pack"></div></div>
+          <div class="astronaut astro-green"><div class="visor"></div><div class="pack"></div></div>
+          <div class="floating-card card-a">◈ <span>MISSION ACTIVE</span></div><div class="floating-card card-b"><span class="mini-dot"></span> CREW ONLINE</div>
+          <div class="star star-a">✦</div><div class="star star-b">✧</div><div class="star star-c">·</div>
+        </div>
+      </section>
+      <section class="how">
+        <div class="section-heading"><span class="eyebrow">MULAI DALAM HITUNGAN DETIK</span><h2>Satu room. Banyak kecurigaan.</h2></div>
+        <div class="feature-grid">
+          <article class="feature"><div class="feature-icon purple">⌘</div><h3>Buat room privat</h3><p>Bagikan kode room ke teman yang ingin kamu ajak main.</p></article>
+          <article class="feature"><div class="feature-icon cyan">◎</div><h3>Jelajahi bersama</h3><p>Gerakkan karaktermu dan lihat posisi pemain lain secara real-time.</p></article>
+          <article class="feature"><div class="feature-icon orange">⚑</div><h3>Waspadai penyusup</h3><p>Diskusikan kecurigaanmu dan jangan gampang percaya.</p></article>
+        </div>
+      </section>
+      <footer><span class="brand-mini">FangUs</span><span>Build the trust. Break the silence.</span><span>Fan-made original prototype</span></footer>
+    </main>
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-panel">
+        <button id="closeModal" class="close-modal" aria-label="Tutup">×</button>
+        <div class="eyebrow"><span></span> READY TO DEPLOY</div><h2 id="modalTitle">Siapkan identitasmu</h2>
+        <p class="modal-desc">Pilih nama yang akan dilihat teman-temanmu.</p>
+        <label for="nameInput">NAMA PEMAIN</label><input id="nameInput" maxlength="16" placeholder="Misalnya: Fang" autocomplete="nickname">
+        <div class="modal-actions"><button id="confirmCreate" class="btn btn-primary">Buat room privat</button><button id="cancelModal" class="btn btn-secondary">Batal</button></div>
+        <p id="modalError" class="error"></p>
+      </div>
+    </div>
+    <section id="lobby" class="lobby hidden">
+      <div class="lobby-top"><button id="leaveBtn" class="btn btn-secondary small">← Keluar</button><div class="room-chip">ROOM <strong id="roomCodeLabel">-----</strong><button id="copyCode" title="Salin kode">▢</button></div></div>
+      <div class="lobby-layout">
+        <div class="game-panel"><div class="game-panel-head"><div><span class="eyebrow">SEKTOR 07 / LOBBY</span><h2 id="lobbyTitle">Menunggu kru...</h2></div><span id="playerCount" class="count-pill">1 / 6 PEMAIN</span></div>
+          <div id="gameMount" class="game-mount"><div class="game-placeholder"><div class="radar"></div><strong>SEKTOR BELUM AKTIF</strong><span>Gerakkan karakter setelah masuk ke permainan.</span></div></div>
+          <div class="game-controls"><span>⌨ WASD / tombol panah</span><span>◉ Gerakan tersinkron</span><span>◌ Maks. 6 pemain</span></div>
+        </div>
+        <aside class="crew-panel"><div class="crew-head"><div><span class="eyebrow">SQUAD STATUS</span><h3>Daftar kru</h3></div><span class="live-pill"><i></i> LIVE</span></div>
+          <div id="crewList" class="crew-list"></div>
+          <div class="invite-box"><span class="eyebrow">UNDANG TEMAN</span><p>Bagikan kode ini agar mereka bisa masuk ke room kamu.</p><div class="invite-code" id="inviteCode">-----</div><button id="copyInvite" class="btn btn-secondary full">▢ Salin kode room</button></div>
+          <div class="lobby-actions"><button id="startBtn" class="btn btn-primary full">Mulai permainan <span>→</span></button><p id="startHint">Host dapat memulai saat minimal 3 pemain bergabung.</p></div>
+        </aside>
+      </div>
+    </section>
+    <div id="toast" class="toast hidden"></div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
